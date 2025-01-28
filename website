@@ -115,7 +115,7 @@
         @keyframes fadeAndMove {
             0% {
                 opacity: 0; /* Start with opacity 0 */
-                background-color: rgba(255, 105, 180, 0.5);
+                background-color: rgba(255, 105, 180, 0.75);
                 transform: translate(0, 0) rotate(var(--random-rotation));
             }
             20% {
