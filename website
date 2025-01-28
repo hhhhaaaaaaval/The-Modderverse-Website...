@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html lang="en-US">
 <head>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
     <meta charset="UTF-8">
     <meta name="robots" content="noindex, nofollow">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,6 +17,10 @@
         }
         
         body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
             text-align: center;
             font-family: 'Orbitron', sans-serif;
             font-size: 13px;
@@ -30,10 +34,7 @@
         #wrapper {
             max-width: 900px;
             width: 90%;
-            margin: 0 auto;
             text-align: center;
-            position: relative;
-            transform: translateY(-50%);
             padding: 20px;
             background: rgba(43, 42, 43, 0.8);
             border-radius: 10px;
@@ -109,24 +110,21 @@
         <h1>The Modderverse</h1>
         <h2>Hosted by Raj-jyot and running on a Mac Pro now</h2>
         
-        <ul id="header">
-        </ul>
-        
         <ul>
             <li class="item">
-                <a href="anki.com/index.html" class="name file">Anki</a>
+                <a href="https://anki.com/index.html" class="name file">Anki</a>
             </li>
             <li class="item">
-                <a href="developer.anki.com/index.html" class="name file">Anki Developer</a>
+                <a href="https://developer.anki.com/index.html" class="name file">Anki Developer</a>
             </li>
             <li class="item">
-                <a href="forums.anki.com/index.html" class="name file">Anki Developer Forums</a>
+                <a href="https://forums.anki.com/index.html" class="name file">Anki Developer Forums</a>
             </li>
             <li class="item">
-                <a href="ddlbots.com/index.html" class="name file">Digital Dream Labs</a>
+                <a href="https://ddlbots.com/index.html" class="name file">Digital Dream Labs</a>
             </li>
             <li class="item">
-                <a href="modder/index.html" class="name file">The Vector OTA library</a>
+                <a href="https://modder/index.html" class="name file">The Vector OTA library</a>
             </li>
             <li class="item">
                 <a href="https://github.com/Switch-modder/Viccyware-2.0" class="name file">Victorware</a>
