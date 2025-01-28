@@ -27,20 +27,9 @@
             color: #ffffff;
             background-color: #2b2a2b;
             overflow: hidden;
+            position: relative;
         }
 
-        .shard-background {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 25%, transparent 25%, transparent 75%, rgba(255, 255, 255, 0.1) 75%, rgba(255, 255, 255, 0.1)),
-                        linear-gradient(225deg, rgba(255, 255, 255, 0.1) 25%, transparent 25%, transparent 75%, rgba(255, 255, 255, 0.1) 75%, rgba(255, 255, 255, 0.1));
-            background-size: 50px 50px;
-            z-index: -1;
-        }
-        
         #wrapper {
             max-width: 900px;
             width: 90%;
@@ -49,6 +38,8 @@
             background: rgba(43, 42, 43, 0.8);
             border-radius: 10px;
             box-shadow: 0 0 20px rgba(0, 0, 0, 1);
+            position: relative;
+            z-index: 1;
         }
         
         h1 {
@@ -111,35 +102,64 @@
         #footer a:hover {
             color: #000000;
         }
+
+        .shard {
+            position: absolute;
+            background-color: rgba(255, 105, 180, 0.5);
+            opacity: 0.5;
+            clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
+            animation: fadeAndMove 5s forwards;
+            transform: rotate(var(--random-rotation));
+        }
+
+        @keyframes fadeAndMove {
+            0% {
+                opacity: 0; /* Start with opacity 0 */
+                background-color: rgba(255, 105, 180, 0.5);
+                transform: translate(0, 0) rotate(var(--random-rotation));
+            }
+            20% {
+                opacity: 0.5; /* Fade in to opacity 0.5 at 20% */
+                background-color: rgba(150, 0, 255, 0.5);
+            }
+            80% {
+                opacity: 0.5; /* Maintain opacity 0.5 */
+                background-color: rgba(100, 0, 200, 0.5);
+                transform: translate(calc(30vw * var(--random-x)), calc(30vh * var(--random-y))) rotate(calc(var(--random-rotation) + 180deg));
+            }
+            100% {
+                opacity: 0; /* Fade out to opacity 0 */
+                background-color: rgba(255, 20, 147, 0.5); /* Return to initial color */
+                transform: translate(calc(30vw * var(--random-x)), calc(30vh * var(--random-y))) rotate(calc(var(--random-rotation) + 360deg));
+            }
+        }
     </style>
     
 </head>
 <body>
 
-    <div class="shard-background"></div>
-    
     <div id="wrapper">
         <h1>The Modderverse</h1>
         <h2>Hosted by Raj-jyot and running on a Mac Pro now</h2>
         
         <ul>
             <li class="item">
-                <a href="https://anki.com/index.html" class="name file">Anki</a>
+                <a href="https://anki.com/index.html" class="name file" target="_blank" rel="noopener noreferrer">Anki</a>
             </li>
             <li class="item">
-                <a href="https://developer.anki.com/index.html" class="name file">Anki Developer</a>
+                <a href="https://developer.anki.com/index.html" class="name file" target="_blank" rel="noopener noreferrer">Anki Developer</a>
             </li>
             <li class="item">
-                <a href="https://forums.anki.com/index.html" class="name file">Anki Developer Forums</a>
+                <a href="https://forums.anki.com/index.html" class="name file" target="_blank" rel="noopener noreferrer">Anki Developer Forums</a>
             </li>
             <li class="item">
-                <a href="https://ddlbots.com/index.html" class="name file">Digital Dream Labs</a>
+                <a href="https://ddlbots.com/index.html" class="name file" target="_blank" rel="noopener noreferrer">Digital Dream Labs</a>
             </li>
             <li class="item">
-                <a href="https://modder/index.html" class="name file">The Vector OTA library</a>
+                <a href="https://modder/index.html" class="name file" target="_blank" rel="noopener noreferrer">The Vector OTA library</a>
             </li>
             <li class="item">
-                <a href="https://github.com/Switch-modder/Viccyware-2.0" class="name file">Victorware</a>
+                <a href="https://github.com/Switch-modder/Viccyware-2.0" class="name file" target="_blank" rel="noopener noreferrer">Victorware</a>
             </li>
         </ul>
 
@@ -147,6 +167,29 @@
             Switch_modder // gay ass
         </p>
     </div>
+
+    <script>
+        function createShard() {
+            const shard = document.createElement('div');
+            const size = Math.random() * 250 + 50;
+            shard.className = 'shard';
+            shard.style.width = `${size}px`;
+            shard.style.height = `${size}px`;
+            shard.style.left = `${Math.random() * 100}vw`;
+            shard.style.top = `${Math.random() * 100}vh`;
+            shard.style.setProperty('--random-x', (Math.random() - 0.5) * 2);
+            shard.style.setProperty('--random-y', (Math.random() - 0.5) * 2);
+            shard.style.setProperty('--random-rotation', `${Math.random() * 360}deg`);
+            document.body.appendChild(shard);
+
+            // Remove the shard after the animation ends
+            shard.addEventListener('animationend', () => {
+                shard.remove();
+            });
+        }
+
+        setInterval(createShard, 750);
+    </script>
     
 </body>
 </html>
